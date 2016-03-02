@@ -1,0 +1,273 @@
+#10664
+Если не указано разрешение и/или браузер то по умолчанию это 1920*1080 Chrome 44.0.2403.107 (64-bit) linux mint
+ff - 43.0
+opera - 34.0.2036.50
+ie 11
+safari 9.0.3
+
+Футер:
+1) Не работает ссылка на http://gurtamcom.test.gurtam.net/ru/gps-hardware http://joxi.ru/D2PVakMhdw13yr.jpg //видимо нужно переименовать 
+2) http://gurtamcom.test.gurtam.net/ru/search?q=%27%27 может быть "не снизу"" если мало контента. http://joxi.ru/LmGqYKkhRBY8LA.jpg
+3) Не работает подписка на новости - после клика на "готово" - ничего не происходит, как минимум должно быть уведомление на сайте и на email.
+По факту просто изменяется url, например: http://gurtamcom.test.gurtam.net/ru/career?email=jabopugay%40vkcode.ru# и страница перелистывается на самый верх.
+
+http://gurtamcom.test.gurtam.net/en/error
+http://gurtamcom.test.gurtam.net/ru/error
+4) Ошибка 200 http://joxi.ru/v29d0z5fG4Q8om.jpg
+
+http://gurtamcom.test.gurtam.net/en/about
+http://gurtamcom.test.gurtam.net/ru/about
+5) Не каждый раз, но фото снизу выстраиваются в ряд (Life in Gurtam)
+
+http://gurtamcom.test.gurtam.net/en/history
+http://gurtamcom.test.gurtam.net/ru/history
+6) ff: Не вмещаются ранние годы http://joxi.ru/YmE14dXUZGDy0m.jpg
+
+http://gurtamcom.test.gurtam.net/en/team
+http://gurtamcom.test.gurtam.net/ru/team
+7) Ожидается, что расширенная информация о отделе будет закрываться, по нажатию в любом пустом месте. Например на области 1,2 http://joxi.ru/a2Xa1g5HyQa8MA.jpg
+8) Страница грузится свыше 2х секунд, это слишком долго.
+
+http://gurtamcom.test.gurtam.net/en/career
+http://gurtamcom.test.gurtam.net/ru/career
+9) ie 11: Все 4 иконки сотрудников всегда цветные, ожидается что цветной будет только выбранная, остальные черно-белые.
+
+http://gurtamcom.test.gurtam.net/en/jobs
+http://gurtamcom.test.gurtam.net/ru/jobs
+? 10) В англоязычной и русскоязычной версии отличаются списки вакансий. Это нормально? может задумка такая...
+
+http://gurtamcom.test.gurtam.net/en/news
+http://gurtamcom.test.gurtam.net/ru/news
+11) При переключении на tag - список тегов переоткрывается (дергается), ожидается более плавная работа.
+
+http://gurtamcom.test.gurtam.net/en/wialon
+12) Не работает ссылка на http://gurtamcom.test.gurtam.net/en/study http://joxi.ru/DmB1V53UNqWE6r.jpg  //видимо нужно переименовать 
+http://gurtamcom.test.gurtam.net/ru/wialon
+?13) В горизонтальном меню (на скрине стрелкой) не представлены 3 страницы из основного (на скрине в рамке) http://joxi.ru/823nNMDF6z0yam.jpg, из-за этого я пропустил их сразу при тестировании, наверняка пользователи тоже их пропустят.
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon-hosting
+14) Не работает ссылка на http://gurtamcom.test.gurtam.net/resource/wialon_hosting/sla_en.pdf http://joxi.ru/Q2KDW38S9OWyEA.jpg //видимо нужно переименовать 
+15) Тормозит открытие/закрытие и перелистывание картинок. http://joxi.ru/l2Zn7GWF8lelo2.jpg
+16) Ссылка ведет на русскую версию сайта. http://joxi.ru/bmo6DeMhMOQl0r.jpg
+17) Ссылка ведет на русскую версию блога. http://joxi.ru/eAO0Zxgf4vZGMr.jpg
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon-hosting
+18) ff: не вмещаются стрелки управления картинками http://joxi.ru/8An54YgFqNnWK2.jpg
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon-local
+19) Ссылка ведет на русскую версию сайта. http://joxi.ru/Q2KDW38S9OMjjA.jpg
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon-local
+20) ie 11,Разрешение 1366*... - подписи к фоткам "налазят" на саму фотку, и на белом фоне их частично не видно.
+
+http://gurtamcom.test.gurtam.net/en/wialon/mobile-wialon
+21) Ссылка ведет на русскую версию блога. http://joxi.ru/YmE14dXUZGvnLm.jpg
+22) Судя по русской версии новости должны быть на тему мобильного виалона, а они рандомные.
+http://gurtamcom.test.gurtam.net/ru/wialon/mobile-wialon
+
+http://gurtamcom.test.gurtam.net/en/wialon/request
+http://gurtamcom.test.gurtam.net/ru/wialon/request
+23) Поле "Телефон" должено быть обязательным для заполнения при выборе предпочтительного вида связи по телефону. (Или просто быть обязательным для заполнения.)
+24) После выбора в дропдаунах - шрифт остаётся "задизейбленым" http://joxi.ru/D2PVakMhdwXxLr.jpg - нужно чтобы был активным.
+25) Поле телефонного номера валидируется как "хотя бы 1 цифра", ожидается приличное валидирование, т.к. ошибка в номере может послужить причиной потери клиента. 
+Пример регулярки: http://habrahabr.ru/post/110731/
+26) Не определяется user country заявки. (admin) http://joxi.ru/ZrJO6R7I1QZ7xm.jpg
+
+http://gurtamcom.test.gurtam.net/en/datacenter
+http://gurtamcom.test.gurtam.net/ru/datacenter
+27) Пиктограммы вылазят за рамки кругов (на скрине в рамках), количество серверов отложенной отработки "05+" (на скрине стрелочка)  - ожидается, что нуля в начале не будет. http://joxi.ru/vAWRkqQSk3Dye2.jpg
+28) Выделение для поля изменения даты не совпадает с рамками поля. http://joxi.ru/bmo6DeMhMOWkkr.jpg
+29) Если на графике выбрать инфу за год, то кнопка all недоступна, судя по всему это одно и тоже. Возможно стоит удалить кнопку all? http://joxi.ru/823nNMDF6zOqDm.jpg
+30) Не сразу понял что отображается на графике. Предлагаю как минумум переименовать avtive на online http://joxi.ru/YmE14dXUZGW6Rm.jpg, как максимум добавить дополнительные подписи на сами графики.
+31) Не переведено на русский меню карты http://joxi.ru/l2Zn7GWF8l33O2.jpg
+32) Не переведены на русский подписи к графику. http://joxi.ru/BA0nyJBFB1z7Jm.jpg
+33) ie11 - переключалки для анимации всегда активны (яркие), в выключенном положении должны быть серые.
+34) ff - всегда неактивны (серые).
+
+http://gurtamcom.test.gurtam.net/en/gurtam-maps
+http://gurtamcom.test.gurtam.net/ru/gurtam-maps
+35) Слабо выделены ссылки - не сразу понял как переключить. Ожидается что они будут выделены цветом и подчеркиванием http://joxi.ru/Dr8WGpQHkKEx9A.jpg
+36) Не переведена на английский подпись "Гб" http://joxi.ru/RmzKRDdtWvlpR2.jpg 
+	"sec" на русский http://joxi.ru/1A5Qq0DhK4yzvA.jpg
+37) Ссылка ведет на русскую версию документации  http://joxi.ru/823nNMDF6zOEdm.jpg
+
+http://gurtamcom.test.gurtam.net/en/gps-trace-orange
+38) Ссылка "Try now" лучше прописать на gps-trace.com, т.к. туда все равно идет редирект, который занимает время ~0.5-1c. http://joxi.ru/p276ljDh0LgE3m.jpg
+39) Cсылка ведет на русскую страницу googgle play http://joxi.ru/a2Xa1g5HyQ5apA.jpg. Нужно дописать &hl=en
+40) Статистика не совпадает с таковой на gps-trace.com http://joxi.ru/Dr8WGpQHkKWvjA.jpg
+41) Обе ссылки на gps tag ведут на русские версии. http://dl3.joxi.net/drive/0010/1527/677367/160121/194f6784d0.jpg
+http://gurtamcom.test.gurtam.net/ru/gps-trace-orange
+42) Ссылки на gps-trace.com и forum.gps-trace.com нужно дополнять идентификатором языка. /ru/  /en/ http://joxi.ru/MAj7vD8tvdK7Gr.jpg
+
+http://gurtamcom.test.gurtam.net/en/gps-tag
+http://gurtamcom.test.gurtam.net/ru/gps-tag
+43) Неверная статистика http://joxi.ru/bmo6DeMhMOvWKr.jpg // по сравнению с http://gurtam.com/ru/gps_tracking/gps_hardware/mobile.html
+
+http://gurtamcom.test.gurtam.net/en/gps_hardware
+http://gurtamcom.test.gurtam.net/ru/gps_hardware
+44) Зажать PageDown, через несколько подгрузок списка он остановится, чтобы прокрутить ниже нужно использовать скролл мышки. Должно работать.
+45) Не переведено на английский название сылки и сама ссылка http://gurtamcom.test.gurtam.net/ru/test-hardware ведет на русскоязычную страницу. http://joxi.ru/E2pWYDGHBv0kem.jpg
+46) Не оформлен заголовок вкладки. http://joxi.ru/ZrJO6R7I1QyGkm.jpg
+47) Не понятно что список вообще может прокручиваться, было бы неплохо добавить графическую подсказку.
+48) Не переведена на русской часть параметров поиска оборудования. http://joxi.ru/J2bN0oOu4q1Kx2.jpg
+
+http://gurtamcom.test.gurtam.net/en/test-hardware
+http://gurtamcom.test.gurtam.net/ru/test-hardware
+
+Страница конкретного оборудования, например: http://gurtamcom.test.gurtam.net/en/gps_hardware/arnavi
+49) Лишние символы поверх информации http://joxi.ru/RmzKRDdtWv3k42.jpg
+50) Таблица параметров оборудования - не переведено описание, в особенностях вообще ничего не понятно. http://joxi.ru/L21p7qDS6w3lem.jpg
+51) Отсутствоет сообщение о успешном голосовании (выставление рейтинга оборудованию). Ожидается, что будет сообщение и изменится количество проголосовавших.
+52) Для трех из четырех оборудований, после голосования и обновления страницы количество проголосовавших менялось на не +1, (+40, -100, +4 и тд)
+53) ff: Заполненные звезды рейтинга не вмещаются по вертикали. http://joxi.ru/J2bN0oOu4q1kM2.jpg
+
+http://gurtamcom.test.gurtam.net/en/sensors
+http://gurtamcom.test.gurtam.net/ru/sensors
+54) Перейти с табличного вида на страницу конкретного датчка http://joxi.ru/BA0nyJBFB1D4nm.jpg, вернуться обратно http://joxi.ru/RmzKRDdtWveOy2.jpg. Ожидается, что будет табличный вид, по факту - список. Также переходит на режим списка при переключении языка.
+
+http://gurtamcom.test.gurtam.net/en/tachographs
+http://gurtamcom.test.gurtam.net/ru/tachographs
+Воспроизводится 54й пункт.
+? 55) Странные графики: http://joxi.ru/YmE14dXUZGyYDm.jpg, динамика положительная, а по графику в ноль уходит.
+
+
+http://gurtamcom.test.gurtam.net/en/hw_manufacturers
+http://gurtamcom.test.gurtam.net/ru/hw_manufacturers
+56) Ожидается возможность сортировки по имени производителя. "Manufacturer"
+
+http://gurtamcom.test.gurtam.net/en/wialon/online-monitoring
+http://gurtamcom.test.gurtam.net/ru/wialon/online-monitoring
+
+http://gurtamcom.test.gurtam.net/en/wialon/fuel-control
+http://gurtamcom.test.gurtam.net/ru/wialon/fuel-control
+
+http://gurtamcom.test.gurtam.net/en/wialon/tacho-control
+http://gurtamcom.test.gurtam.net/ru/wialon/tacho-control
+57) Лишняя точка: http://joxi.ru/ZrJO6R7I1QBGPm.jpg, также после фразы “Infringement”.
+
+http://gurtamcom.test.gurtam.net/en/community
+http://gurtamcom.test.gurtam.net/ru/community
+? 58) http://gurtamcom.test.gurtam.net/ru/soft-developers - страница не представлено в основном меню.
+59) В ссылки на study нужно добавлять идентификатор языка http://joxi.ru/DmB1V53UNqLLYr.jpg study.gurtam.com/language/set/en
+
+http://gurtamcom.test.gurtam.net/ru/soft-developers
+http://gurtamcom.test.gurtam.net/en/soft-developers
+60) Все ссылки http://joxi.ru/823nNMDF6z0Lxm.jpg ведут на http://www.eflotta.com/.
+
+http://gurtamcom.test.gurtam.net/en/partners
+! 61) В английской версии предствлена карта юнитов вместо карты партнеров.
+http://gurtamcom.test.gurtam.net/ru/partners
+
+http://gurtamcom.test.gurtam.net/en/techsupport
+http://gurtamcom.test.gurtam.net/ru/techsupport
+62) На графике - http://joxi.ru/LmGqYKkhRB0WdA.jpg отлично и неприемлимо - имеют схожие цвета, не сразу понятно как работает тп: хорошо или плохо. кроме того на левом графике не указано количество ответов/какой временной промежуток.
+? 63) http://gurtamcom.test.gurtam.net/ru/reglament - не представлена в основном меню.
+! 64) В форме логина в GHS - пароль ожидается с input type="password" http://joxi.ru/gmv6LDQhxeoOkm.jpg.
+65) Не проходит логин в GHS - даже если ввести правильную связку логин/пароль. (просто переходяит на https://support.gurtam.com/)
+? 66) Должен ли робыт быть анимированным?
+
+http://gurtamcom.test.gurtam.net/en/reglament
+http://gurtamcom.test.gurtam.net/ru/reglament
+67) Ссылка http://joxi.ru/nAyLaDWFX9zEk2.jpg ведет на русскую версию контактов, ожидается англ.
+68) В английской версии отсутствует ссылка на скачивание регламента работы тп в .pdf.
+
+http://gurtamcom.test.gurtam.net/en/education
+http://gurtamcom.test.gurtam.net/ru/education
+69) "Как связаться" а)формат телефона не подходит для автоматического набора; б) ссылка на онлайн чат пустая. http://joxi.ru/52aNG93uGlzVMA.jpg 
+70) Форма (обе) : шрифт в дропдаунах должен быть ярким после выбора. Все дропдауны должны быть изначально пустыми.
+! 71) Форма: В случае успешного запроса - не регистрируется пользователь на study, сообщение о успехе не информативно (ожидается сообщение о успехе регистрации на study или подтверждения email и т.д.).
+! 72) Форма (обе) Internal Server error если во все обязательные поля ввести "jabopugay@vkcode.ru" http://joxi.ru/LmGqYKkhRB0MGA.jpg, судя по всему из-за того, что выбор города не валидируется как обязательный для ввода, а первая в списке страна выбирается автоматически.
+73) После переключения языка не сохраняется выбор типа формы, сбрасывает на "обучение".
+74) Форма: Ожидаемая маска даты: dd:mm:yyyy http://joxi.ru/KAxdZD6f4VP49A.jpg
+
+http://gurtamcom.test.gurtam.net/en/help
+75) Выделенные ссылки ведут на русскоязычные страницы: http://joxi.ru/l2Zn7GWF8lxwx2.jpg
+http://gurtamcom.test.gurtam.net/ru/help
+76) http://gurtamcom.test.gurtam.net/ru/marketing - не представлена в основном меню
+
+http://gurtamcom.test.gurtam.net/en/marketing
+77) Страница целиком не переведена на русский.
+http://gurtamcom.test.gurtam.net/ru/marketing
+78) Телефон не кликабелен для автоматического набора.
+
+http://gurtamcom.test.gurtam.net/en/contacts
+79) В англ. версии - отсутствует офис в Дубае.
+http://gurtamcom.test.gurtam.net/ru/contacts
+80) Значки указателей не вмещаются по горизонтали. http://joxi.ru/bmo6DeMhMOPOpr.jpg
+81) Если выбрать офис из блоков под картой, то указатель на карте выделится красным. Такое же поведение ожидается если выбрать офис на карте.
+82) Офис в дубаЕ, пр.п. ед.ч. http://joxi.ru/gmv6LDQhxePBMm.jpg
+? 83) Отсутствует литовский офис.
+
+http://gurtamcom.test.gurtam.net/en/wia-tag
+http://gurtamcom.test.gurtam.net/ru/wia-tag
+84) Незаполненная страница.
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon_local/user-agreement
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon_local/user-agreement
+85) Нет ссылки на эти страницы.
+86) Не переведена на английский.
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon-history
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon-history
+ок
+
+http://gurtamcom.test.gurtam.net/en/soft
+http://gurtamcom.test.gurtam.net/ru/soft
+? 87) В английской версии список доп. софта заначительно меньше.
+? 88) Судя по остальным url's - этот должен иметь вид .../ru/wialon/soft;.../en/wialon/soft
+
+http://gurtamcom.test.gurtam.net/en/languages
+http://gurtamcom.test.gurtam.net/ru/languages
+89) Ожидается возможность сортировки по языку и % перевода.
+
+http://gurtamcom.test.gurtam.net/en
+http://gurtamcom.test.gurtam.net/ru
+90) На карте отмечены только 3 офиса, ожидается 5 (с литовским и дубайским).
+91) Если выбрать вручную слайд на верхнем слайдере http://joxi.ru/Drl7wDJt4Kwk5A.jpg - ожидается, что он прекратит переключение.
+92) Не переведено на английский имя ссылки на новости http://joxi.ru/nAyLaDWFX9PvP2.jpg
+
+Хедер.
+93) Выбрать английский язык, кликнуть на логотип Gurtam - язык переключится на русский.
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

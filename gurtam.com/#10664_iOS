@@ -1,0 +1,126 @@
+#10664
+iPhone 6 750x1334
+iPhone 5s 640x1136
+Apple iPad 2048x1536
+android nexus 5 1920*1080
+планшет sony с разрешением  2,5к
+
+Большинство пунктов "iPhone6" - воспроизводятся также на телефоне с  Android.
+
+
+http://gurtamcom.test.gurtam.net/en
+http://gurtamcom.test.gurtam.net/ru
+95) iphone6 - на слайды всегда наложен полупрозрачный голубой фон.
+96) iphone6: меню - Решения - Wialon - отсутствуют ссылки на "онлайн мониторинг", "контроль топлива", "тахографический контроль","дополнительное по". 
+97) iphone6: меню - "Заказать" - должен быть на одном уровне с  "Wialon", а он находится внутри него.
+98) iphone6: зайти в меню - Решения - Wialon, вернуться назад браузером. Стрелочка напротив пункта меню "Решения" - будет направлена вверх а должна быть вниз (т.к. меню свернуто).
+99) iphone6: Отсутствует карта.
+
+Хедер.
+100) iphone6: отсутвует поиск.
+
+Футер:
+101) iphone6: Отсутствует нижнее меню.
+
+http://gurtamcom.test.gurtam.net/en/error
+http://gurtamcom.test.gurtam.net/ru/error
+102) Картинка бобра не вмещается справа - обрезается отвертка.
+103) В поиске - текст пишется серым шрифтом, ожидается черный.
+
+http://gurtamcom.test.gurtam.net/en/about
+http://gurtamcom.test.gurtam.net/ru/about
+104) nexus5: Надписи к значкам (История компании, Наша команда и Карьера в Гуртам) должны быть выравнены по левому краю. (на iphone они размещаются в 2 строки)
+
+http://gurtamcom.test.gurtam.net/en/team
+http://gurtamcom.test.gurtam.net/ru/team
+105) iPad - не работает анимация. iPhone - анимация отображается как встроенное видео, с кнопкой play, при этом не влазит по горизонтали (не видно мужика).
+106) iphone6 - не отображаются картинки из инстаграма.
+107) На телефоне нет раздела Наши отделы.
+
+http://gurtamcom.test.gurtam.net/en/career
+http://gurtamcom.test.gurtam.net/ru/career
+108) ios:  "сотрудники о Gurtam" - фото olya, adsa нужно повернуть 90 градусов.
+109) телефоны: Нужно сделать так, чтобы рамка в историях сотрудников адаптировалась под размер текста. Иначе тоже много свободного места остается снизу.
+
+
+http://gurtamcom.test.gurtam.net/en/jobs
+http://gurtamcom.test.gurtam.net/ru/jobs
+110) "Apply with CV" и "Download CV form" - выровнять по левому краю.
+
+http://gurtamcom.test.gurtam.net/en/news
+http://gurtamcom.test.gurtam.net/ru/news
+111) ios: При переключении на tag - страница перезагружается и перематывается на верх.
+112) телефоны: новости с маленькими картинками лучше размещать по 2 в ширину.
+113) iPad не раскрываются все теги новостей, только первая строка.
+
+
+http://gurtamcom.test.gurtam.net/en/wialon
+http://gurtamcom.test.gurtam.net/ru/wialon
+114) iphone6: "wialon mobile app" - отсутствует картинка телефона.
+115) телефоны: не сворачивается блок: "wialon сегодня".
+
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon-hosting
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon-hosting
+116) iPad: "Fleet KPIs ..." - кнопка для просмотра картинки расположена в центре надписи, ожидается что будет в конце.
+
+http://gurtamcom.test.gurtam.net/en/wialon/wialon-local
+http://gurtamcom.test.gurtam.net/ru/wialon/wialon-local
+117) iPad: "Fleet KPIs ..." - кнопка для просмотра картинки расположена в центре надписи, ожидается что будет в конце.
+
+http://gurtamcom.test.gurtam.net/en/wialon/mobile-wialon
+http://gurtamcom.test.gurtam.net/ru/wialon/mobile-wialon
+118) iphone6: отсутствуют подписи к functional capabilities.
+
+http://gurtamcom.test.gurtam.net/en/wialon/request
+http://gurtamcom.test.gurtam.net/ru/wialon/request
+119) iPad: форма - на "стрелках открытия/закрытия" дропдаунов лишние треугольнички.
+
+http://gurtamcom.test.gurtam.net/en/datacenter
+http://gurtamcom.test.gurtam.net/ru/datacenter
+120) ios: Анимация не выключается.
+121) iphone6: отсутствует график статистики.
+
+http://gurtamcom.test.gurtam.net/en/gurtam-maps
+http://gurtamcom.test.gurtam.net/ru/gurtam-maps
+122)iphone6:  Functions: отсутствует изображени монитора со скриншотами, не переключаются пункты.
+
+http://gurtamcom.test.gurtam.net/en/test-hardware
+http://gurtamcom.test.gurtam.net/ru/test-hardware
+
+Страница конкретного оборудования, например: http://gurtamcom.test.gurtam.net/en/gps_hardware/arnavi
+123) iphone6: more devices ... - ожидается вертикальный список.  
+
+http://gurtamcom.test.gurtam.net/en/wialon/online-monitoring
+http://gurtamcom.test.gurtam.net/ru/wialon/online-monitoring
+124) Отсутствуют ссылки-картинки на tacho-control и fuel-control
+
+http://gurtamcom.test.gurtam.net/en/wialon/fuel-control
+http://gurtamcom.test.gurtam.net/ru/wialon/fuel-control
+Воспроизводится п. 124
+
+http://gurtamcom.test.gurtam.net/en/wialon/tacho-control
+http://gurtamcom.test.gurtam.net/ru/wialon/tacho-control
+Воспроизводится п. 124
+
+http://gurtamcom.test.gurtam.net/en/partners
+http://gurtamcom.test.gurtam.net/ru/partners
+125) Переход на вкладку technical support 24/7 - осуществляется только со второго раза, после первого обе вкладки становятся красными, воспроизводится также на других страницах.
+
+http://gurtamcom.test.gurtam.net/en/techsupport
+http://gurtamcom.test.gurtam.net/ru/techsupport
+126) iPhone6: номера телефонов и email нужно выровнять по левому краю.
+127) android: тап по второму номеру телефона (+370 37 999-460) в русской версии не вызывает режим набора номера.
+
+http://gurtamcom.test.gurtam.net/en/education
+http://gurtamcom.test.gurtam.net/ru/education
+128)  iPhone6: номера телефонов и email нужно выровнять по левому краю.
+129) Телефоны: Форма - дата - маска и дата не вмещаются по горизонтали. https://docs.gurtam.net/index.php/s/q0D9gURc7PN4tCm
+
+http://gurtamcom.test.gurtam.net/en/marketing
+http://gurtamcom.test.gurtam.net/ru/marketing
+130) iPhone: http://gurtamcom.test.gurtam.net/ru/marketing - в дропдаунах не вмещается по вертикали буква g.
+
+http://gurtamcom.test.gurtam.net/en/contacts
+http://gurtamcom.test.gurtam.net/ru/contacts
+131) iphone6: по клику на  блок дубайского офиса - не видно изменений на карте, было бы неплохо перематывать на карту по клику.
