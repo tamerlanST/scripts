@@ -28,11 +28,11 @@ for i in {5000..5000}; do {
 #curl -s "http://qa.test/wialon/ajax.html?svc=core/login&params=\{\"user\":\"stanbu_$i\",\"password\":\"stan_$i\"\}" 
 #> /dev/null
 #sid2=`curl -s "http://qa.test/wialon/ajax.html?svc=core/login&params=\{\"user\":\"stan_$i\",\"password\":\"stan_$i\"\}"| grep -i -o '"eid":"[^"]*"'`
-curl -s "http://qa.test/wialon/ajax.html?svc=core/login&params=\{\"user\":\"stan_$i\",\"password\":\"stan_$i\"\}"
+curl -s "http://stan.test.gurtam.net:8030/wialon/ajax.html?svc=core/login&params=\{\"user\":\"stan93_$i\",\"password\":\"stan\"\}"
 # > /dev/null
 
 
-echo "core/login from user stan_"$i
+echo "core/login from user stan93_"$i
 #	пишет в файл сиды сессий
 #arr=$(echo $sid1 | tr ";" "\n")	
 #	for x in $arr
