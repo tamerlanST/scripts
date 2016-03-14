@@ -1,19 +1,45 @@
 #!/bin/bash
+n1=$1
+n2=$2
+
 time=$(date +%s)
-#url=https://hst-api.wialon.com
-url=http://stan.test.gurtam.net:8030
+server='stan.test.gurtam.net:8030'
+client_id='Wialon Hosting'
 fn=`date +%d%m%y`
-for i in {1..1}; do {
-	sign=`curl -s "$url/login_simple.html" | grep -i -o '"sign" value="[^"]*"' | cut -c15-58` && resp=`curl -s -H "Content-Type:application/x-www-form-urlencoded" -iX POST "$url/login_simple.html" --data "login=stan93_$i&passw=stan&lang=ru&client_id=Wialon+Hosting&access_type=-1&activation_time=0&duration=2592000&flags=2&redirect_uri=http://stan.test.gurtam.net:8030/checker.html&response_type=token&wialon_sdk_url=&sign=$sign"`
-	#-H "Content-Type:application/x-www-form-urlencoded" 
-	echo $sign
-	#resp=`curl -s -H "Content-Type:application/x-www-form-urlencoded" -iX POST "$url/oauth.html" --data "login=stan93_$i&passw=stan&lang=ru&client_id=Wialon+Hosting&access_type=-1&activation_time=0&duration=2592000&flags=2&redirect_uri=http://stan.test.gurtam.net:8030/checker.html&response_type=hash&wialon_sdk_url=&sign=$sign"`
-	# | grep -i -o 'HTTP/1.0[^"]*'| cut -c10-12`
-	#resp=`curl -is --data-urlencode "login=biguser&passw=&lang=ru&client_id=Wialon+Hosting&access_type=-1&activation_time=0&duration=2592000&flags=2&redirect_uri=http://stan.test.gurtam.net:8030/checker.html&response_type=hash&wialon_sdk_url=&sign=$sign" "http://stan.test.gurtam.net:8030/oauth.html"`
-	#| grep -i -o 'HTTP/1.0[^"]*'| cut -c10-12`" 
-	echo $resp >> resp.txt
-	if [ "$resp" = "301" ];
-		then echo "$i" >> "$fn.txt"
+urlencode() {
+  local string="${1}"
+  local strlen=${#string}
+  local encoded=""
+  local pos c o
+
+  for (( pos=0 ; pos<strlen ; pos++ )); do
+     c=${string:$pos:1}
+     case "$c" in
+        [-_.~a-zA-Z0-9] ) o="${c}" ;;
+        * )               printf -v o '%%%02x' "'$c"
+     esac
+     encoded+="${o}"
+  done
+  echo "${encoded}"    # You can either set a return variable (FASTER) 
+  REPLY="${encoded}"   #+or echo the result (EASIER)... or both... :p
+}
+	sign=`curl -s "${server}/login_simple.html" | grep -i -o '"sign" value="[^"]*"' | cut -c15-58`
+	urlencode $sign >>/dev/null
+	post_data="client_id=${client_id}&redirect_uri=http://${server}/login_simple.html&access_type=-1&activation_time=0&duration=2592000&flags=0x7&sign=${REPLY}&login=stan93_1&passw=stan"
+	sleep 1
+	#resp=`curl -s -iX POST "http://${server}/oauth.html" --data "$post_data" | grep -i -o 'http://[^"]*response'`
+	#token=`curl -s -i "$resp" | grep -i -o 'access_token=[^"]*&user_name' | cut -c14-85`
+	#echo "token1="$token
+#for i in {$n1..$n2}
+for (( i=$n1; i<$n2; i++ ))
+do
+#echo $i
+	post_data="client_id=${client_id}&redirect_uri=http://${server}/login_simple.html&access_type=-1&activation_time=0&duration=2592000&flags=0x7&sign=${REPLY}&login=stan93_$i&passw=stan"
+	resp=`curl -s -iX POST "http://${server}/oauth.html" --data "$post_data" | grep -i -o 'http://[^"]*response'`
+	token=`curl -s -i "$resp" | grep -i -o 'access_token=[^"]*&user_name' | cut -c14-85`
+#	echo "token$i="$token
+	if [ "$token" = "" ];
+		then echo "$i" >> "$fn"token_error".txt"
 	fi
-} done;
+done;
 echo "Выполнено за "$(($(date +%s)-$time))" с."
