@@ -1,6 +1,7 @@
 #!/bin/bash
 n1=$1
 n2=$2
+n3=$3 #multi treading
 
 time=$(date +%s)
 server='stan.test.gurtam.net:8030'
@@ -27,9 +28,6 @@ urlencode() {
 	urlencode $sign >>/dev/null
 	post_data="client_id=${client_id}&redirect_uri=http://${server}/login_simple.html&access_type=-1&activation_time=0&duration=2592000&flags=0x7&sign=${REPLY}&login=stan93_1&passw=stan"
 	sleep 1
-	#resp=`curl -s -iX POST "http://${server}/oauth.html" --data "$post_data" | grep -i -o 'http://[^"]*response'`
-	#token=`curl -s -i "$resp" | grep -i -o 'access_token=[^"]*&user_name' | cut -c14-85`
-	#echo "token1="$token
 #for i in {$n1..$n2}
 for (( i=$n1; i<$n2; i++ ))
 do
@@ -42,4 +40,4 @@ do
 		then echo "$i" >> "$fn"token_error".txt"
 	fi
 done;
-echo "Выполнено за "$(($(date +%s)-$time))" с."
+echo "$n3 stan.test Выполнено за "$(($(date +%s)-$time))" с."
