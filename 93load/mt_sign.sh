@@ -1,6 +1,6 @@
 #!/bin/bash
 for i in {1..4}; do
-	x=2000
+	x=1000
 	echo "$i stan.test"
 	n1=$(($i*$x-$x+1))
 	n2=$(($n1+$x-1))
