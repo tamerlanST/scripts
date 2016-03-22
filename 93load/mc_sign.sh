@@ -9,5 +9,5 @@ ssh root@ws000040 './mt_sign.sh' &
 ssh root@ilma.test './mt_sign.sh' &
 ./mt_sign.sh &
 ssh nevl@nevl.test './mt_sign.sh' &
-
+ssh root@qa.test 'cpu_load.sh' &
 wait

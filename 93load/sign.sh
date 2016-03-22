@@ -4,7 +4,7 @@ n2=$2
 n3=$3 #multi treading
 
 time=$(date +%s)
-server='qa.test:8019'
+server='qa.test.gurtam.net'
 client_id='Wialon Hosting'
 fn=`date +%d%m%y`
 urlencode() {
@@ -35,7 +35,7 @@ urlencode() {
 	 post_data="client_id=${client_id}&redirect_uri=http://${server}/login_simple.html&access_type=-1&activation_time=0&duration=2592000&flags=0x7&sign=${REPLY}&login=stan93_$i&passw=stan"
 	 resp=`curl -s -iX POST "http://${server}/oauth.html" --data "$post_data" | grep -i -o 'http://[^"]*response'`
 	 token=`curl -s -i "$resp" | grep -i -o 'access_token=[^"]*&user_name' | cut -c14-85`
-  #	echo "token$i="$token
+  	 #echo "token$i="$token
 	 #if [ "$token" = "" ];
 	 #  then echo "$i" >> "$fn"token_error".txt"
 	 #fi
