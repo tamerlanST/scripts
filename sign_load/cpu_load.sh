@@ -14,7 +14,7 @@ s8='api2_2'
 
 #sleep 10
 
-for (( i=1; i<3; i++ ))
+for (( i=1; i<41; i++ ))
 do
 	#old nginx
 	if [ "$1" = "old" ];
