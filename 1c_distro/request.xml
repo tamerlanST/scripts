@@ -1,0 +1,9 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:api="http://sales.gurtam.net/SALES/ws/rp?wsdl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <api:ClientLogin>
+         <api:username>user</api:username>
+         <api:password>password</api:password>
+         <api:applicationKey>key</api:applicationKey>
+      </api:ClientLogin>
+</soapenv:Body>

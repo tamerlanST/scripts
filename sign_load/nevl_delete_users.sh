@@ -1,6 +1,6 @@
 #!/bin/bash
 time=$(date +%s)
-server='http://qa.test.gurtam.net:8019/wialon/ajax.html?svc'
+server='http://nevl.dev.gurtam.net:8019/wialon/ajax.html?svc'
 sid=`curl -s "$server=core/login&params=\{\"user\":\"biguser\",\"password\":\"\"\}" | jq '.["eid"]' | cut -c2-33`
 echo $sid
 n1=$1
@@ -16,6 +16,7 @@ do {
 	echo $id
 
 #core/delete_user
+	#echo \{\"itemId\":$id\}
 	dresp=`curl -s "$server=item/delete_item&params=\{\"itemId\":$id\}&sid=$sid"`
 	echo $dresp
 }
