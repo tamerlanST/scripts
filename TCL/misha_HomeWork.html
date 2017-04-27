@@ -1,0 +1,92 @@
+<?
+
+	#Bad MotherFucker procedure
+	proc BMF {param} {
+		if {$param == "NULL"} {
+			puts "<p>Error storage</p>"
+			return
+		}
+	}
+
+	puts <h1>Mishka-pachakun!</h1>
+
+	set ss [adf_cast_i_storage_service [[adf_core] get_service "svc_storage"]]
+	puts <p>SS=$ss</p>
+
+	##########################################################################
+
+	# get resource_col
+	puts <h2>Resources</h2>
+	set resource_col [$ss get_items "avl_resource"]
+		BMF $resource_col
+	puts <p>resource_col_pointer=$resource_col</p>
+	puts <p>number_of_resources=[$resource_col get_count]</p>
+	puts <h2>Resources_list</h2>
+
+	#print resources 
+	for {set i 0} {$i < [$resource_col get_count]} {incr i} {
+		#puts <p>$i</p>
+		
+		set resource [$resource_col get_item_by_pos $i]
+		BMF $resource
+		#puts $resource
+		
+		#id
+		set typed_resource [adf_cast_i_typed_object $resource]
+		BMF $typed_resource
+		#puts $typed_resource
+
+		set resource_id [$typed_resource get_id]
+		BMF $resource_id
+
+
+		#name
+		set named_resource [adf_cast_i_named_object $resource]
+		BMF $named_resource
+		#puts $named_resource
+		
+		set resource_name [$named_resource get_name]
+		BMF $resource_name
+			puts "<p>$resource_id $resource_name</p>"
+		
+	}
+
+	##########################################################################
+
+	# get user_col
+	puts <h2>Users</h2>
+	set user_col [$ss get_items "user"]
+		BMF $user_col
+	puts <p>user_col_pointer=$user_col</p>
+	puts <p>number_of_users=[$user_col get_count]</p>
+	puts <h2>Users_list</h2>
+
+	#print users 
+	for {set i 0} {$i < [$user_col get_count]} {incr i} {
+		#puts <p>$i</p>
+		
+		#pointer
+		set user [$user_col get_item_by_pos $i]
+		BMF $user
+		#puts $user
+
+		#id
+		set typed_user [adf_cast_i_typed_object $user]
+		BMF $typed_user
+		#puts $typed_user
+
+		set user_id [$typed_user get_id]
+		BMF $user_id
+
+
+		#name
+		set named_user [adf_cast_i_named_object $user]
+		BMF $named_user
+		#puts $named_user
+		
+		set user_name [$named_user get_name]
+		BMF $user_name
+			puts "<p>$user_id $user_name</p>"
+	}
+
+?>	

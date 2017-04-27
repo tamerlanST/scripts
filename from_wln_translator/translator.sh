@@ -1,7 +1,7 @@
 #!/bin/bash
 server='http://web.wia.test.gurtam.net/wialon/ajax.html'
 sid='3f999abb6ad019838a8f94f4c8cc5005'
-unitID='127'
+unitID='130'
 delay='70s'
 
 #cat messages file
