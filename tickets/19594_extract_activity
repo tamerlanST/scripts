@@ -1,0 +1,45 @@
+awk '
+BEGIN {
+	FS=",\|;"
+	prev_dist=-1
+	dist_total=0
+}
+{
+	for(i=1;i<=NF;i++) 	{
+		if (match($i,"tco_driver1_id:") != 0)  {
+			tco_driver1_id = $i
+		}
+		if (match($i,"tco_activity_type1:") != 0)  {
+			tco_activity_type1 = $i
+		}
+		if (match($i,"tco_activity_tm1:") != 0)  {
+			tco_activity_tm1 = $i
+		}
+		if (match($i,"tco_driver1_state:") != 0)  {
+                   tco_driver1_state = $i
+		}
+ 		if (match($i,"tco_driver1_card:") != 0)  {
+                   tco_driver1_card = $i
+		}
+
+		dist_param="tco_distance:"
+		d=match($i,dist_param)
+		if (d != 0)  {
+			tco_distance = (d $i)
+			dist_val=substr($i,length(dist_param)+1,length($i))
+		}
+
+                if (i == 5) {
+                   speed = $i
+                }
+	} 
+	
+	if (prev_dist>0) {
+		dist_total = dist_total+dist_val-prev_dist
+	}
+	print strftime("%Y-%m-%d %H:%M:%S", $2) " " tco_driver1_id " " tco_activity_type1 " " tco_distance " dist_val:" dist_total " tco_tm: " tco_activity_tm1
+        #" speed: " speed " tco_driver1_state: " tco_driver1_state " tco_driver1_card: " tco_driver1_card
+	prev_dist = dist_val
+} END {
+	print "total distance " dist_total
+}' $1

@@ -1,0 +1,181 @@
+<?
+# send kv cache request
+set ss [adf_cast_i_storage_service [[adf_core] get_service "svc_storage"]]
+proc send_items_cache_request {method url {body ""}} {
+	set hs [adf_cast_i_http_service [[adf_core] get_service "svc_http"]]
+	if {$hs == "NULL"} {
+		adf_trace "sync_kvcache: no http service"
+		return "NULL"
+	}
+	# detect kvcache servers
+	set param [get_env_val "ADF_AVL_ITEMS_CACHE_SERVERS"]
+	if {$param == ""} {
+		adf_trace "sync_kvcache: no servers"
+		return "NULL"
+	}
+	set result_json "NULL"
+	set servers [split $param ";"]
+	for {set i 0} {$i < [llength $servers]} {incr i} {
+		# create new HTTP client session
+		set hc [$hs get_client_v2 [lindex $servers $i]]
+		if {$hc == "NULL"} {
+			adf_trace "sync_kvcache: no get http client to server '[lindex $servers $i]'"
+			continue
+		}
+		# http request method
+		if {![$hc set_request_method $method]} {
+			$hc release
+			adf_trace "sync_kvcache: no set request method '$method' to server '[lindex $servers $i]'"
+			continue
+		}
+		# http request form
+		if {[string equal -length 4 $method "POST"] || [string equal -length 3 $method "PUT"]} {
+			$hc add_post_variable "params" $body
+		}
+		# send request to unique cache
+		if {![$hc request $url 600]} {
+			$hc release
+			adf_trace "sync_kvcache: request timeout to server '[lindex $servers $i]' for url '$url' and body '$body'"
+			continue
+		}
+		# fetch http result data
+		set json [$hc get_data_as_string]
+		if {$json == ""} {
+			$hc release
+			adf_trace "sync_kvcache: no json data result from server '[lindex $servers $i]' for url '$url' and body '$body'"
+			continue
+		}
+		$hs put_client_v2 $hc
+		$hc release
+		set reader [adf_http_parse_json $json]
+		if {$reader == "NULL"} {
+			adf_trace "sync_kvcache: no parse json '$json' from server '[lindex $servers $i]' for url '$url' and body '$body'"
+			continue
+		}
+		# check result code
+		if {[string compare [$reader get_text "code"] "0"]} {
+			set code [$reader get_text "code"]
+			adf_trace "sync_kvcache: result code '$code' from server '[lindex $servers $i]' for url '$url' and body '$body'"
+			$reader release
+			continue
+		}
+		set reader_data [$reader get_object "data"]
+		if {$reader_data == "NULL"} {
+			$reader release
+			if {[string equal -length 3 $method "GET"]} {
+				adf_trace "sync_kvcache: no object 'data' from server '[lindex $servers $i]' for url '$url' and body '$body'"
+			}
+			continue
+		}
+		$reader release
+		$reader_data release
+		# get result value
+		set result_json $json
+	}
+	return $result_json
+}
+
+proc check_cached_item {category fix} {
+	set invalid_count 0
+	set ss [adf_cast_i_storage_service [[adf_core] get_service "svc_storage"]]
+	set value_writer [adf_http_create_json_writer]
+	if {$ss == "NULL" || $value_writer == "NULL"} {
+		return 0
+	}
+	$value_writer add_property "category" $category
+	set json [$value_writer get_json]
+	$value_writer release
+	set url "/keys?params=[adf_text_encode $json]"
+	# send request to kv cache
+	set result_json [send_items_cache_request "GET" $url]
+	if {$result_json == "NULL" || $result_json == ""} {
+		adf_trace "sync_kvcache: no result for request '$url'"
+		return 0
+	}
+	set reader [adf_http_parse_json $result_json]
+	if {$reader == "NULL"} {
+		$value_writer release
+		return 0
+	}
+	set reader_data [$reader get_object "data"]
+	if {$reader_data == "NULL"} {
+		$reader release
+		return 0
+	}
+	set keys [$reader_data get_keys]
+	set keys_count [$keys get_count]
+	for {set i 0} {$i < $keys_count} {incr i} {
+		set key [adf_cast_i_string [$keys get_item_by_pos $i]]
+		if {$key == "NULL"} {
+			continue
+		}
+		set item_data [$reader_data get_object [$key get_value]]
+		$key release
+		if {$item_data == "NULL" || ![$item_data validate "{n: text, c: text, v: text}"]} {
+			continue
+		}
+		set reader_value [adf_http_parse_json [$item_data get_text "v"]]
+		if {$reader_value == "NULL"} {
+			$item_data release
+			continue
+		}
+		set server_guid [$reader_value get_text "svg"]
+		set param1 [$item_data get_text "c"]
+		set param2 [$item_data get_text "n"]
+		if {[string equal $category "user-cluster-id"] || [string equal $category "site-common-name"] || [string equal $category "avl-phones"]} {
+			set server_guid $category
+			set param1 ""
+		}
+		$reader_value release
+		$item_data release
+		set item [$ss get_cached_item $server_guid $param1 $param2]
+		if {$item == "NULL"} {
+			incr invalid_count
+			puts "name: '$param2'<br>"
+			if {$fix} {
+				set json_writer [adf_http_create_json_writer]
+				if {$json_writer == "NULL"} {
+					continue
+				}
+				$json_writer add_property "name" $param2
+				$json_writer add_property "category" $category
+				set json [$json_writer get_json]
+				$json_writer release
+				set url "/key?params=[adf_text_encode $json]"
+				send_items_cache_request "DELETE" $url
+			}
+			continue
+		}
+		$item release
+	}
+	$keys release
+	$reader_data release
+	return $invalid_count
+}
+
+set fix 0
+set total_count 0
+set categories [list "user" "user-cluster-id" "avl_resource" "avl_hw" "avl_site" "site-common-name" "lic_account" "avl-phones"]
+
+foreach category $categories {
+	puts "category: '$category'<br>"
+	set count [check_cached_item $category $fix]
+	puts "count: '$count'<br><br>"
+	incr total_count $count
+}
+
+set devices [$ss get_items "avl_hw"]
+for {set i 0} {$i < [$devices get_count]} {incr i} {
+	set hw [adf_cast_i_avl_hw_type [$devices get_item_by_pos $i]]
+	if {$hw == "NULL"} {
+		continue
+	}
+	puts "category: '[$hw get_guid]'<br>"
+	set count [check_cached_item [$hw get_guid] $fix]
+	puts "count: '$count'<br><br>"
+	incr total_count $count
+}
+
+puts "total count: '$total_count'"
+?>
+

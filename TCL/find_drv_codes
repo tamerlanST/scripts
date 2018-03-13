@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo tco_driver1_id
+cat $1 | grep -oP 'tco_driver1_id:"\K[^"]+' | sort | uniq
+echo tco_driver2_id
+cat $1 | grep -oP 'tco_driver2_id:"\K[^"]+' | sort | uniq
