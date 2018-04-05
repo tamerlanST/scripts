@@ -1,13 +1,14 @@
 #!/bin/bash
-sid='07024ba0ab262665703ff271054c2cf3'
+sid='2bf2177a758273f16fcb255e737a7dec'
 server='web.qa3.test.gurtam.net/wialon/ajax.html'
 #creatorId='14'
 creatorId='14'
 hwTypeId='4'
 utm=`date +%s`
 billing_plan_name='load_billing'
-resource_iterator='200'
+resource_iterator='100'
 unit_iterator='100'
+sensor_iterator='20'
 
 if [[ $1 == "" ]]; then
 	echo "Created by stan, 2018."
@@ -114,27 +115,32 @@ if [[ $1 == "fuel" ]]; then
 		svc='core/batch'
 		params='{"params":[{"svc":"unit/update_sensor","params":{"n":"fuel","t":"fuel level","d":"","m":"l","p":"adc12","f":0,"c":"{\"appear_in_popup\":true,\"show_time\":false,\"pos\":1,\"cm\":0,\"validate_driver_unbound\":0,\"unbound_code\":\"\",\"mu\":\"0\",\"act\":1,\"uct\":0,\"timeout\":0,\"ci\":{}}","vt":1,"vs":0,"tbl":[],"id":0,"itemId":'$LINE',"callMode":"create"}},{"svc":"unit/update_fuel_calc_types","params":{"itemId":'$LINE',"calcTypes":2}}],"flags":0}'
 		resp=`curl -s "$server?svc=$svc&sid=$sid" --data-urlencode "params=$params"`
-		#echo $resp
+		echo $resp
 			mresp='[[1,{"id":1,"n":"fuel","t":"fuel level","d":"","m":"l","p":"adc12","f":0,"c":"{\"act\":1,\"appear_in_popup\":true,\"ci\":{},\"cm\":0,\"mu\":\"0\",\"pos\":1,\"show_time\":false,\"timeout\":0,\"uct\":0,\"unbound_code\":\"\",\"validate_driver_unbound\":0}","vt":1,"vs":0,"tbl":[]}],{}]'
-			#echo $mresp
+			echo $mresp
 			if [ "$mresp" != "$resp" ];
 				then echo "Это фиаско добавления датчика в объект $LINE, братан!!!"
 			fi
 	done < .unitids.log		
 fi
 
-if [[ $1 == "sensor" ]]; then
-	echo "Fuel mode"
-	while read LINE; do 
-		#add fuel sensor
-		svc='core/batch'
-		params='{"params":[{"svc":"unit/update_sensor","params":{"n":"fuel","t":"fuel level","d":"","m":"l","p":"adc12","f":0,"c":"{\"appear_in_popup\":true,\"show_time\":false,\"pos\":1,\"cm\":0,\"validate_driver_unbound\":0,\"unbound_code\":\"\",\"mu\":\"0\",\"act\":1,\"uct\":0,\"timeout\":0,\"ci\":{}}","vt":1,"vs":0,"tbl":[],"id":0,"itemId":'$LINE',"callMode":"create"}},{"svc":"unit/update_fuel_calc_types","params":{"itemId":'$LINE',"calcTypes":2}}],"flags":0}'
-		resp=`curl -s "$server?svc=$svc&sid=$sid" --data-urlencode "params=$params"`
-		#echo $resp
-			mresp='[[1,{"id":1,"n":"fuel","t":"fuel level","d":"","m":"l","p":"adc12","f":0,"c":"{\"act\":1,\"appear_in_popup\":true,\"ci\":{},\"cm\":0,\"mu\":\"0\",\"pos\":1,\"show_time\":false,\"timeout\":0,\"uct\":0,\"unbound_code\":\"\",\"validate_driver_unbound\":0}","vt":1,"vs":0,"tbl":[]}],{}]'
-			#echo $mresp
-			if [ "$mresp" != "$resp" ];
-				then echo "Это фиаско добавления датчика в объект $LINE, братан!!!"
-			fi
+if [[ $1 == "sensors" ]]; then
+	echo "mnogo sensors mode"
+	while read LINE; do
+		for (( i=11; i<=$sensor_iterator; i++ )); do 
+			#custom sensor
+			svc='unit/update_sensor'
+			params='{"n":"s'$i'","t":"custom","d":"","m":"km","p":"(adc12*const7+const3.5/const7)^(const0.5)","f":0,"c":"{\"appear_in_popup\":true,\"show_time\":false,\"pos\":4,\"cm\":0,\"validate_driver_unbound\":0,\"unbound_code\":\"\",\"mu\":\"0\",\"act\":1,\"uct\":0,\"timeout\":0,\"ci\":{}}","vt":1,"vs":0,"tbl":[],"id":0,"itemId":'$LINE',"callMode":"create"}'
+			fresp=`curl -s "$server?svc=$svc&sid=$sid" --data-urlencode "params=$params"`
+			resp=`echo $fresp | jq .[1].n`
+			echo $LINE $resp
+				mresp='"s'$i'"'
+				echo $mresp
+				if [ "$mresp" != "$resp" ];
+					then echo "Это фиаско добавления $i кастомного датчика в объект $LINE, братан!!!"
+					echo $fresp
+				fi
+			sleep 0.01	
+		done				
 	done < .unitids.log		
 fi
