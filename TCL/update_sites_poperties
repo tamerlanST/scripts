@@ -1,0 +1,36 @@
+proc get_all_site_props {site} {
+	set props [$site get_custom_properties 1]
+	if {$props != "NULL"} {
+		set props_count [$props get_count]
+		for {set i 0} {$i < $props_count} {incr i} {
+			set prop [adf_cast_i_named_string [$props get_item_by_pos $i]]
+			print "--> --> '[$prop get_name]': '[$prop get_value]'"
+		}
+		$props release
+	}
+}
+
+#proc of set site property named metric_counters and valued 0
+proc set_metric_for_site {site} {
+	if {[$site set_custom_property 1 "metric_counters" "0"]} {
+		print "--> --> metric_counters set 0 OK"
+	} else {
+		print "--> --> metric_counters set 0 FAULT"
+	}
+}
+
+set sites_col [$ss get_items "avl_site"]
+if {$sites_col != "NULL"} {
+	set col_count [$sites_col get_count]
+	print "$col_count in collection"
+	for {set i 0} {$i < $col_count} {incr i} {
+		set site [adf_cast_i_avl_web_site [$sites_col get_item_by_pos $i]]
+		print "--> '[$site get_name]' -> '[$site get_common_name]'"
+		get_all_site_props $site
+		#set_metric_for_site $site
+		$site release
+	}
+	$sites_col release
+} else {
+	print "no any site"
+}

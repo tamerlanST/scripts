@@ -13,15 +13,15 @@ echo $sid
 # 2 - work
 # 3 - driving
 
-i=$1
+i=1
 
-			params1='{"resourceId":"599513","driverId":"'$i'","time":"1509944400","activity":"2","distance":"10","duration":"0","force":1}'
-			params2='{"resourceId":"599513","driverId":"'$i'","time":"1509945300","activity":"3","distance":"10","duration":"0","force":1}'
-			params3='{"resourceId":"599513","driverId":"'$i'","time":"1509957900","activity":"2","distance":"20","duration":"0","force":1}'
-			params4='{"resourceId":"599513","driverId":"'$i'","time":"1509958800","activity":"0","distance":"20","duration":"0","force":1}'
-			params5='{"resourceId":"599513","driverId":"'$i'","time":"1509962400","activity":"1","distance":"20","duration":"0","force":1}'
-			params6='{"resourceId":"599513","driverId":"'$i'","time":"1509966000","activity":"3","distance":"20","duration":"0","force":1}'
-			params7='{"resourceId":"599513","driverId":"'$i'","time":"1509976800","activity":"0","distance":"30","duration":"0","force":1}'
+			params1='{"resourceId":"3007502","driverId":"'$i'","time":"1509944400","activity":"2","distance":"10","duration":"0","force":1}'
+			params2='{"resourceId":"3007502","driverId":"'$i'","time":"1509945300","activity":"3","distance":"10","duration":"0","force":1}'
+			params3='{"resourceId":"3007502","driverId":"'$i'","time":"1509957900","activity":"2","distance":"20","duration":"0","force":1}'
+			params4='{"resourceId":"3007502","driverId":"'$i'","time":"1509958800","activity":"0","distance":"20","duration":"0","force":1}'
+			params5='{"resourceId":"3007502","driverId":"'$i'","time":"1509962400","activity":"1","distance":"20","duration":"0","force":1}'
+			params6='{"resourceId":"3007502","driverId":"'$i'","time":"1509966000","activity":"3","distance":"20","duration":"0","force":1}'
+			params7='{"resourceId":"3007502","driverId":"'$i'","time":"1509976800","activity":"0","distance":"30","duration":"0","force":1}'
 		
 
 		svc='resource/reg_drv_tacho_activity'
